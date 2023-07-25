@@ -9,9 +9,6 @@ import ru.alishev.springcourse.repositories.PeopleRepository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author Neil Alishev
- */
 @Service
 @Transactional(readOnly = true)
 public class PeopleService {
@@ -46,5 +43,9 @@ public class PeopleService {
     @Transactional
     public void delete(int id) {
         peopleRepository.deleteById(id);
+    }
+
+    public void test(){
+        System.out.println("Testing...");
     }
 }

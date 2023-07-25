@@ -1,0 +1,33 @@
+package ru.alishev.springcourse.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ru.alishev.springcourse.models.Item;
+import ru.alishev.springcourse.models.Person;
+import ru.alishev.springcourse.repositories.ItemsRepository;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class ItemsService {
+
+    private final ItemsRepository itemsRepository;
+
+    @Autowired
+    public ItemsService(ItemsRepository itemsRepository) {
+        this.itemsRepository = itemsRepository;
+    }
+
+    @Transactional
+    public List<Item> findByItemName(String itemName){
+        return itemsRepository.findByItemName(itemName);
+    }
+
+    @Transactional
+    public List<Item> findByOwner(Person owner){
+        return itemsRepository.findByOwner(owner);
+    }
+
+}
